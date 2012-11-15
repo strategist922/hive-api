@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>hive::api</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="[% uri_for('/static/js/jquery-1.8.2.min.js') %]"></script>
+	<script type="text/javascript" src="[% uri_for('/static/js/index.js') %]"></script>
+	<link href="[% uri_for('/static/bootstrap/bootstrap.css') %]" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="[% uri_for('/static/css/main.css') %]">
+</head>
+<body>
+	<div class="container">
+		<article>
+		<header><h1>hive::api</h1>
+			<select id="formselect">
+				<option id="1" value="api1">api1</option>
+			</select>
+			<a href="/demoui">DemoUI</a> 
+		</header>
+		<br>
+		<div id="formapi1">
+			<h2>Basics</h2>
+			To query API1 use the url bellow followed by a question mark [?] and search options. Search options are separated by semicolons [;]. Advanced queries may take a long time.
+			URL:
+			<pre class=prettyprint>/api1-json</pre>
+			Example usage:
+			<pre class=prettyprint>/api1-json?table_name=0;key_word=world;newer_than=20121103</pre>
+			<h2>Tables(one must be chose or an error will be returned)</h2>
+
+			twitter_raw
+			<pre class=prettyprint>table_name=0</pre>
+			twitter_word_index
+			<pre class=prettyprint>table_name=1</pre>
+			twitter_word_count
+			<pre class=prettyprint>table_name=2</pre>
+			twitter_pair_index
+			<pre class=prettyprint>table_name=3</pre>
+			twitter_pair_count
+			<pre class=prettyprint>table_name=4</pre>
+			twitter_hash_index
+			<pre class=prettyprint>table_name=5</pre>
+			twitter_hash_count
+			<pre class=prettyprint>table_name=6</pre>
+			twitter_tweet
+			<pre class=prettyprint>table_name=7</pre>
+
+			<h2>Keyword search</h2>
+			To do a key word search.
+			Only numbers and letters allowd and works in the following tables:
+			<ul>
+				<li>twitter_word_index</li>
+				<li>twitter_word_count</li>
+			</ul>
+			<pre class=prettyprint>key_word=somekeyword</pre>
+			
+			<h2>Markov pair search</h2>
+			To do a key word search.
+			Only numbers and letters allowd and works in the following tables:
+			<ul>
+				<li>twitter_pair_index</li>
+				<li>twitter_pair_count</li>
+			</ul>
+			<pre class=prettyprint>markov1=firstkeyword;markov2=secondkeyword</pre>
+			
+			<h2>ID search</h2>
+			To do a key word search.
+			Only numbers and letters allowd and works in the following tables:
+			<ul>
+				<li>twitter_raw</li>
+				<li>twitter_word_index</li>
+				<li>twitter_pair_index</li>
+				<li>twitter_hash_index</li>
+				<li>twitter_tweet</li>
+			</ul>
+			<pre class=prettyprint>postid=4eb0b5e2d2c8de5daa2a9be665383e9a</pre>
+			
+			<h2>Hashtag search</h2>
+			To search for a hash tag.
+			Only numbers and letter allowed and works in the following tables:
+			<ul>
+				<li>twitter_hash_index</li>
+				<li>twitter_hash_count</li>
+			</ul>
+			<pre class=prettyprint>hashtag=somehashtag</pre>
+
+			<h2>Date specific</h2>
+			To sort by date. Only numbers are allowed but it works in all tables.
+			<h3>Newer than</h3>
+
+			<pre class=prettyprint>newer_than=20121005</pre>
+			
+			<h3>Date equals</h3>
+			
+			<pre class=prettyprint>date_equals=20121005</pre>
+			
+			<h3>Older than</h3>
+
+			<pre class=prettyprint>older_than=20121005</pre>
+			
+			<h2>Count specific</h2>
+			For count specific searches.
+			Only numbers allowed and only available in the following tables:
+			<ul>
+				<li>twitter_word_count</li>
+				<li>twitter_pair_count</li>
+				<li>twitter_hash_count</li>
+			</ul>
+			<h3>Higer than</h3>
+			
+			<pre class=prettyprint>higher_than=15</pre>
+			
+			<h3>Equal</h3>
+			
+			<pre class=prettyprint>count_equals=15</pre>
+			
+			<h3>Lower than</h3>
+			
+			<pre class=prettyprint>lower_than=15</pre>
+			
+			<h2>Limit response for sampling</h2>
+			To limit the number of responces for sampling. Works in all tables.
+			<pre class=prettyprint>limit=250</pre>
+			
+		</div>
+
+		<footer>Powered by <a href="http://amon.64p.org/">Amon2::Lite</a></footer>
+		</article>
+	</div>
+</body>
+</html>

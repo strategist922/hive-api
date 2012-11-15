@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>hive::api</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="[% uri_for('/static/js/jquery-1.8.2.min.js') %]"></script>
+	<script type="text/javascript" src="[% uri_for('/static/js/main.js') %]"></script>
+	<link href="[% uri_for('/static/bootstrap/bootstrap.css') %]" rel="stylesheet" type="text/css"/>
+	<link rel="stylesheet" href="[% uri_for('/static/css/main.css') %]">
+</head>
+<body>
+	<div class="container">
+		<article>
+		<header><h1>hive::api::demo::gui</h1></header>
+		<br>
+		API to use:<br>
+		<select id="formselect">
+			<option id="1" value="api1">api1</option>
+		</select>
+		<div id="formapi1">
+			Table to search:<br>
+			<select id="api1tableselect">
+				<option id="init" value="">not selected...</option>
+				<option id="tabl0" value="twitter_raw">twitter_raw</option>
+				<option id="tabl1" value="twitter_word_index">twitter_word_index</option>
+				<option id="tabl2" value="twitter_word_count">twitter_word_count</option>
+				<option id="tabl3" value="twitter_pair_index">twitter_pair_index</option>
+				<option id="tabl4" value="twitter_pair_count">twitter_pair_count</option>
+				<option id="tabl5" value="twitter_hash_index">twitter_hash_index</option>
+				<option id="tabl6" value="twitter_hash_count">twitter_hash_count</option>
+				<option id="tabl7" value="twitter_tweet">twitter_tweet</option>
+			</select>
+			<br>
+			<div id="dispword">
+				Keyword to search for:<br>
+				<input type="text" id="key_word">
+				<br>
+			</div>
+			<div id="dispmarkov">
+				Markov pairs to search for:<br>
+				<input type="text" id="markovone"> <input type="text" id="markovtwo">
+				<br>
+			</div>
+			<div id="dispid">
+				Entry ID to search for:<br>
+				<input type="text" id="entryid">
+				<br>
+			</div>
+			<div id="disphash">
+				Hash tag to search for:<br>
+				<input type="text" id="hashtag">
+				<br>
+			</div>
+			<div id="dispdate">
+				Filter by date:<br>
+				<select id="dateformat">
+					<option id="" value="">Select date mode</option>
+					<option id="dateeq" value="dateeq">One specific date</option>
+					<option id="datenewer" value="datenewer">Newer posts than</option>
+					<option id="dateolder" value="dateolder">Older posts than</option>
+					<option id="datespan" value="datespan">A date span</option>
+				</select>
+				<br>
+				From:<input type="text" id="datefrom"> 
+				<div id="dispdate1">To: <input type=text id="dateto"></div>
+				<br>
+			</div>
+			<div id="dispcount">
+				Filter by counts:<br>
+				<select id="countformat">
+					<option id="" value="">Select count mode</option>
+					<option id="counteq" value="counteq">Count equal to</option>
+					<option id="counthigher" value="counthigher">Count higher than</option>
+					<option id="countlower" value="countlower">Count lower than</option>
+				</select>
+				<input type="text" id="countnr">
+				<br>
+			</div>
+			<div id="displimit">
+				Limit output:<br>
+				<input type="text" id="limitamount">
+				<br>
+			</div>
+			<input type="button" value="go" class="btn btn-primary" onclick="DoSearch1()">
+
+		</div>
+		<div id="searchoutput"></div>
+		<footer><hr>Powered by <a href="http://amon.64p.org/">Amon2::Lite</a></footer>
+		</article>
+	</div>
+</body>
+</html>
