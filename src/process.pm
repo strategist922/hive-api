@@ -41,7 +41,7 @@ our %tables = (
 our $tablesRef = \%tables;
 
 sub api1 {
-	my ($table_name, $key_word, $markov1, $markov2, $postid, $hash_tag, $newer_than, $date_equals, $older_than, $higher_than, $count_equals, $lower_than, $limit) = @_;
+	my ($table_name, $key_word, $markov1, $markov2, $postid, $hash_tag, $newer_than, $date_equals, $older_than, $higher_than, $count_equals, $lower_than, $limit, $VERSION, $ADDR, $PORT) = @_;
 	if($table_name =~ m/^-?\d+$/ ){
 		if($table_name >= 0 && $table_name <= 7){
 			my $hive_query = "SELECT * FROM $table_names[$table_name]";
@@ -80,11 +80,11 @@ sub api1 {
 			}
 			$hive_query = $work;
 			my %json_hash = (
-					'api_version' => 0.1,
+					'api_version' => $VERSION,
 					'query' => $hive_query,
 					'table' => $table_names[$table_name],
 				);
-			my $socket = Thrift::Socket->new("h-apps1.t-lab.cs.teu.ac.jp", 10002);
+			my $socket = Thrift::Socket->new($ADDR, $PORT);
 			$socket->setSendTimeout(600 * 1000); # 10min.
 			$socket->setRecvTimeout(600 * 1000);
 			my $transport = Thrift::BufferedTransport->new($socket);

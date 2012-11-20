@@ -24,9 +24,9 @@ use lib File::Spec->catdir(dirname(__FILE__), 'extlib', 'lib', 'perl5');
 use lib File::Spec->catdir(dirname(__FILE__), 'lib');
 use Amon2::Lite;
 use JSON;
+use Config::Simple;
 require process;
 
-our $VERSION = '0.01';
 
 # put your configuration here
 sub load_config {
@@ -59,6 +59,16 @@ get '/api1-json' => sub {
 	my $count_equals = $c->req->param('count_equals');
 	my $lower_than = $c->req->param('lower_than');
 	my $limit = $c->req->param('limit');
+	my $cfg = new Config::Simple('/etc/lazydrone.conf');
+	if(!$cfg){
+		return$c->render_json({'error' => 0, 'descript' => 'Conf could not be read or requiered arguments are missing.'});
+	}
+	my $VERSION = $cfg->param("hive-api.version");
+	my $ADDR = $cfg->param("hive-api.hive1-addr");
+	my $PORT = $cfg->param("hive-api.hive1-port");
+	if(!$VERSION || !$ADDR || !$PORT){
+		return$c->render_json({'error' => 0, 'descript' => 'Conf could not be read or requiered arguments are missing.'});
+	}
 	if(!$table_name && $table_name != 0){
 		return$c->render_json({'error' => 1, 'descript' => 'A table must be selected'});
 	}
@@ -74,7 +84,7 @@ get '/api1-json' => sub {
 	if(($markov1 && !$markov2) || (!$markov1 && $markov2)) {
 		return $c->render_json({'error' => 5, 'descript' => 'To do a markov search both markov pairs must be defined'});	
 	}
-	return $c->render_json(process::api1($table_name, $key_word, $markov1, $markov2, $postid, $hash_tag, $newer_than, $date_equals, $older_than, $higher_than, $count_equals, $lower_than, $limit));
+	return $c->render_json(process::api1($table_name, $key_word, $markov1, $markov2, $postid, $hash_tag, $newer_than, $date_equals, $older_than, $higher_than, $count_equals, $lower_than, $limit, $VERSION, $ADDR, $PORT));
 };
 
 
