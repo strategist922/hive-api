@@ -27,63 +27,37 @@
 			Example usage:
 			<pre class=prettyprint>/api1-json?table_name=0;key_word=world;newer_than=20121103</pre>
 			<h2>Tables(one must be chose or an error will be returned)</h2>
-
 			twitter_raw
 			<pre class=prettyprint>table_name=0</pre>
-			twitter_word_index
-			<pre class=prettyprint>table_name=1</pre>
-			twitter_word_count
-			<pre class=prettyprint>table_name=2</pre>
-			twitter_pair_index
-			<pre class=prettyprint>table_name=3</pre>
-			twitter_pair_count
-			<pre class=prettyprint>table_name=4</pre>
-			twitter_hash_index
-			<pre class=prettyprint>table_name=5</pre>
-			twitter_hash_count
-			<pre class=prettyprint>table_name=6</pre>
 			twitter_tweet
-			<pre class=prettyprint>table_name=7</pre>
+			<pre class=prettyprint>table_name=1</pre>
+			twitter_word_index
+			<pre class=prettyprint>table_name=2</pre>
+			twitter_pattern_index
+			<pre class=prettyprint>table_name=3</pre>
+			twitter_hash_index
+			<pre class=prettyprint>table_name=4</pre>
+			
 
 			<h2>Keyword search</h2>
 			To do a key word search.
 			Only numbers and letters allowd and works in the following tables:
 			<ul>
 				<li>twitter_word_index</li>
-				<li>twitter_word_count</li>
+				<li>twitter_pettern_index</li>
+				<li>twitter_hash_index</li>
 			</ul>
 			<pre class=prettyprint>key_word=somekeyword</pre>
-			
-			<h2>Markov pair search</h2>
-			To do a key word search.
-			Only numbers and letters allowd and works in the following tables:
-			<ul>
-				<li>twitter_pair_index</li>
-				<li>twitter_pair_count</li>
-			</ul>
-			<pre class=prettyprint>markov1=firstkeyword;markov2=secondkeyword</pre>
 			
 			<h2>ID search</h2>
 			To do a key word search.
 			Only numbers and letters allowd and works in the following tables:
 			<ul>
 				<li>twitter_raw</li>
-				<li>twitter_word_index</li>
-				<li>twitter_pair_index</li>
-				<li>twitter_hash_index</li>
 				<li>twitter_tweet</li>
 			</ul>
 			<pre class=prettyprint>postid=4eb0b5e2d2c8de5daa2a9be665383e9a</pre>
 			
-			<h2>Hashtag search</h2>
-			To search for a hash tag.
-			Only numbers and letter allowed and works in the following tables:
-			<ul>
-				<li>twitter_hash_index</li>
-				<li>twitter_hash_count</li>
-			</ul>
-			<pre class=prettyprint>hashtag=somehashtag</pre>
-
 			<h2>Date specific</h2>
 			To sort by date. Only numbers are allowed but it works in all tables.
 			<h3>Newer than</h3>

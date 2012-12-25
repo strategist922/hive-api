@@ -47,7 +47,6 @@ function DoSearch1(){
 	var tableToSearch = $('#api1tableselect').val();
 	var keyword = $('#key_word').val();
 	var markov1 = $('#markovone').val();
-	var markov2 = $('#markovtwo').val();
 	var entryid = $('#entryid').val();
 	var hashtag = $('#hashtag').val();
 	var dateformat = $('#dateformat').val();
@@ -75,43 +74,26 @@ function DoSearch1(){
 			query += ';postid=';
 			query += entryid;
 		}
-	}else if(tableToSearch == 'twitter_word_count'){
-		query += 'table_name=2';
-		if(keyword){
-			query += ';key_word=';
-			query += keyword;	
-		}
-		if(countform && countnr){
-			console.log(countform);
-			if(countform == 'counteq'){
+		if(countformat && countnr){
+			if(countformat == 'counteq'){
 				query += ';count_equals=';
-			}else if(countform == 'counthigher'){
+			}else if(countformat == 'counthigher'){
 				query += ';higher_than=';
-			}else if(countform == 'countlower'){
+			}else if(countformat == 'countlower'){
 				query += ';lower_than=';
 			}
 			query += countnr;
 		}
-	}else if(tableToSearch == 'twitter_pair_index'){
+	}else if(tableToSearch == 'twitter_pattern_index'){
 		query += 'table_name=3';
-		if(markov1 && markov2){
-			query += ';markov1=';
+		if(markov1){
+			query += ';key_word1=';
 			query += markov1;
-			query += ';markov2=';
-			query += markov2;
 		}
 
 		if(entryid){
 			query += ';postid=';
 			query += entryid;
-		}
-	}else if(tableToSearch == 'twitter_pair_count'){
-		query += 'table_name=4';
-		if(markov1 && markov2){
-			query += ';markov1=';
-			query += markov1;
-			query += ';markov2=';
-			query += markov2;
 		}
 		if(countformat && countnr){
 			if(countformat == 'counteq'){
@@ -126,18 +108,12 @@ function DoSearch1(){
 	}else if(tableToSearch == 'twitter_hash_index'){
 		query += 'table_name=5';
 		if(hashtag){
-			query += ';hash_tag=';
+			query += ';key_word=';
 			query += hashtag;
 		}
 		if(entryid){
 			query += ';postid=';
 			query += entryid;
-		}
-	}else if(tableToSearch == 'twitter_hash_count'){
-		query += 'table_name=6';
-		if(hashtag){
-			query += ';hash_tag=';
-			query += hashtag;
 		}
 		if(countformat && countnr){
 			if(countformat == 'counteq'){

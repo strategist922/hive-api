@@ -23,13 +23,10 @@
 			<select id="api1tableselect">
 				<option id="init" value="">not selected...</option>
 				<option id="tabl0" value="twitter_raw">twitter_raw</option>
-				<option id="tabl1" value="twitter_word_index">twitter_word_index</option>
-				<option id="tabl2" value="twitter_word_count">twitter_word_count</option>
-				<option id="tabl3" value="twitter_pair_index">twitter_pair_index</option>
-				<option id="tabl4" value="twitter_pair_count">twitter_pair_count</option>
-				<option id="tabl5" value="twitter_hash_index">twitter_hash_index</option>
-				<option id="tabl6" value="twitter_hash_count">twitter_hash_count</option>
-				<option id="tabl7" value="twitter_tweet">twitter_tweet</option>
+				<option id="tabl1" value="twitter_tweet">twitter_tweet</option>
+				<option id="tabl2" value="twitter_word_index">twitter_word_index</option>
+				<option id="tabl3" value="twitter_pattern_index">twitter_pattern_index</option>
+				<option id="tabl4" value="twitter_hash_index">twitter_hash_index</option>
 			</select>
 			<br>
 			<div id="dispword">
@@ -38,8 +35,8 @@
 				<br>
 			</div>
 			<div id="dispmarkov">
-				Markov pairs to search for:<br>
-				<input type="text" id="markovone"> <input type="text" id="markovtwo">
+				Pattern search for:<br>
+				<input type="text" id="markovone">
 				<br>
 			</div>
 			<div id="dispid">
