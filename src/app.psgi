@@ -75,7 +75,7 @@ get '/api1-json' => sub {
 	if(($higher_than && $count_equals) || ($lower_than && $count_equals)){
 		return$c->render_json({'error' => 4, 'descript' => 'Cant use count_equals in combination with higer_than or lower_than'});
 	}
-	return $c->render_json(process::api1($table_name, $key_word, $postid, $newer_than, $date_equals, $older_than, $higher_than, $count_equals, $lower_than, $limit));
+	return $c->render_json(process::api1($table_name, $key_word, $postid, $newer_than, $date_equals, $older_than, $higher_than, $count_equals, $lower_than, $limit, $VERSION, $ADDR, $PORT));
 };
 
 

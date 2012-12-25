@@ -38,7 +38,7 @@ our %tables_api = (
 our $tableRef_api = \%tables_api;
 
 sub api1 {
-	my ($table_name, $key_word, $postid, $newer_than, $date_equals, $older_than, $higher_than, $count_equals, $lower_than, $limit) = @_;
+	my ($table_name, $key_word, $postid, $newer_than, $date_equals, $older_than, $higher_than, $count_equals, $lower_than, $limit, $VERSION, $ADDR, $PORT) = @_;
 	if($table_name =~ m/^-?\d+$/ ){
 		if($table_name >= 0 && $table_name <= 7){
 			my $hive_query = "SELECT * FROM $table_names_api[$table_name]";
