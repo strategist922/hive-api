@@ -1,4 +1,21 @@
 #!/usr/bin/perl
+
+#Copyright (c) 2012 Johan Gustavsson <johan@life-hack.org>
+#
+#Hive-api is free software: you can redistribute it and/or modify
+#it under the terms of the GNU General Public License as published by
+#the Free Software Foundation, either version 3 of the License, or
+#(at your option) any later version.
+#
+#Hive-api is distributed in the hope that it will be useful,
+#but WITHOUT ANY WARRANTY; without even the implied warranty of
+#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#GNU General Public License for more details.
+#
+#You should have received a copy of the GNU General Public License
+#along with Hive-api.  If not, see <http://www.gnu.org/licenses/>.
+
+
 package process;
 use strict;
 use warnings;
@@ -60,11 +77,11 @@ sub api1 {
 			}
 			$hive_query = $work;
 			my %json_hash = (
-					'api_version' => 0.1,
+					'api_version' => $VERSION,
 					'query' => $hive_query,
 					'table' => $table_names_api[$table_name],
 				);
-			my $socket = Thrift::Socket->new("h-apps1.t-lab.cs.teu.ac.jp", 10002);
+			my $socket = Thrift::Socket->new($ADDR, $PORT);
 			$socket->setSendTimeout(600 * 1000); # 10min.
 			$socket->setRecvTimeout(600 * 1000);
 			my $transport = Thrift::BufferedTransport->new($socket);
