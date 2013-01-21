@@ -94,7 +94,20 @@ sub api1 {
 		        for(my $i = 0; $i < @$callback; $i++){
 					my @output = split('\t', $callback->[$i]);
 					for(my $j = 0; $j < @output; $j++) {
-						$json_hash{results}{$i}{$$tableRef_api{$table_names_api[$table_name]}[$j]} = $output[$j];
+						if(($table_names_api[$table_name] eq "twitter_word_index" || $table_names_api[$table_name] eq "twitter_pattern_index" || $table_names_api[$table_name] eq "twitter_hash_index") && ($$tableRef_api{$table_names_api[$table_name]}[$j] eq "adj" || $$tableRef_api{$table_names_api[$table_name]}[$j] eq "adv" || $$tableRef_api{$table_names_api[$table_name]}[$j] eq "verb" || $$tableRef_api{$table_names_api[$table_name]}[$j] eq "noun" || $$tableRef_api{$table_names_api[$table_name]}[$j] eq "id")){
+							if($output[$j] eq "[]"){
+								$json_hash{results}{$i}{$$tableRef_api{$table_names_api[$table_name]}[$j]} = "";	
+							}else{
+								my $work = $output[$j];
+								$work =~ s/[\$\[\]\"]+//g;
+								my @val = split(',', $work);
+								for(my $k = 0;$k < @val; $k++){
+ 									$json_hash{results}{$i}{$$tableRef_api{$table_names_api[$table_name]}[$j]}{$k} = $val[$k];
+  								}
+							}
+						}else{
+							$json_hash{results}{$i}{$$tableRef_api{$table_names_api[$table_name]}[$j]} = $output[$j];
+						}
 					}
 					 
 				}
